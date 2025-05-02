@@ -35,10 +35,12 @@ public class testGUI extends JFrame {
 	public JComboBox comboBox_homeTown;
 	public ButtonGroup btn_gender;
 	public JTextField textField_find;
-	public JButton btn_add, btn_delete, btn_update, btn_OK, btn_cancle, btn_find;
+	public JButton btn_add, btn_delete, btn_update, btn_cancle, btn_find;
 	private JTextField textField_phoneNumber;
 	private JTextField textField_citizenID;
 	private DefaultTableModel tableModel;
+	private JTextField textField_classID;
+	private JButton btn_cancel;
 
 	/**
 	 * Launch the application.
@@ -75,7 +77,7 @@ public class testGUI extends JFrame {
 		
 		tableModel = new DefaultTableModel(
                 new Object[][]{},
-                new String[]{"ID", "Name", "Phone Number", "Citizen ID", "Hometown", "Gender", "Date of birth", "Conduct Score", "Academic Score", "Position"}
+                new String[]{"ID", "Name", "Phone Number", "Citizen ID", "Hometown", "Gender", "Date of birth", "Conduct Score", "Academic Score", "Class ID"}
         );
 		
 		table = new JTable();
@@ -197,46 +199,40 @@ public class testGUI extends JFrame {
 		textField_conductScore.setBounds(450, 254, 143, 23);
 		contentPane.add(textField_conductScore);
 		
-		JLabel label_position = new JLabel("Position");
-		label_position.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		label_position.setBounds(307, 356, 75, 23);
-		contentPane.add(label_position);
+		JLabel label_classID = new JLabel("Class ID");
+		label_classID.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		label_classID.setBounds(307, 356, 75, 23);
+		contentPane.add(label_classID);
 		
-		textField_position = new JTextField();
-		textField_position.setFont(new Font("Tahoma", Font.PLAIN, 19));
-		textField_position.setColumns(10);
-		textField_position.setBounds(450, 356, 143, 23);
-		contentPane.add(textField_position);
+		textField_classID = new JTextField();
+		textField_classID.setFont(new Font("Tahoma", Font.PLAIN, 19));
+		textField_classID.setColumns(10);
+		textField_classID.setBounds(450, 356, 143, 23);
+		contentPane.add(textField_classID);
 		
 		btn_add = new JButton("Add");
 		btn_add.setBackground(new Color(0, 128, 192));
 		btn_add.setForeground(new Color(255, 255, 255));
-		btn_add.setBounds(58, 390, 89, 23);
+		btn_add.setBounds(67, 390, 89, 23);
 		contentPane.add(btn_add);
 		
 		btn_delete = new JButton("Delete");
 		btn_delete.setBackground(new Color(255, 128, 128));
 		btn_delete.setForeground(new Color(255, 255, 255));
-		btn_delete.setBounds(169, 390, 89, 23);
+		btn_delete.setBounds(184, 390, 89, 23);
 		contentPane.add(btn_delete);
 		
 		btn_update = new JButton("Update");
 		btn_update.setBackground(new Color(128, 255, 128));
 		btn_update.setForeground(new Color(255, 255, 255));
-		btn_update.setBounds(278, 390, 89, 23);
+		btn_update.setBounds(302, 390, 89, 23);
 		contentPane.add(btn_update);
 		
-		btn_OK = new JButton("OK");
-		btn_OK.setBackground(new Color(128, 255, 255));
-		btn_OK.setForeground(new Color(255, 255, 255));
-		btn_OK.setBounds(388, 390, 89, 23);
-		contentPane.add(btn_OK);
-		
-		btn_cancle = new JButton("Cancle");
-		btn_cancle.setBackground(new Color(255, 128, 64));
-		btn_cancle.setForeground(new Color(255, 255, 255));
-		btn_cancle.setBounds(501, 390, 89, 23);
-		contentPane.add(btn_cancle);
+		btn_cancel = new JButton("Cancel");
+		btn_cancel.setBackground(new Color(255, 128, 64));
+		btn_cancel.setForeground(new Color(255, 255, 255));
+		btn_cancel.setBounds(417, 390, 89, 23);
+		contentPane.add(btn_cancel);
 		
 		textField_find = new JTextField();
 		textField_find.setBounds(344, 12, 136, 20);

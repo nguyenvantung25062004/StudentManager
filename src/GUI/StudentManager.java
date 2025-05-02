@@ -183,31 +183,25 @@ public class StudentManager{
 		btn_add = new JButton("Add");
 		btn_add.setBackground(new Color(0, 128, 192));
 		btn_add.setForeground(new Color(255, 255, 255));
-		btn_add.setBounds(58, 390, 89, 23);
+		btn_add.setBounds(67, 390, 89, 23);
 		contentPane.add(btn_add);
 		
 		btn_delete = new JButton("Delete");
 		btn_delete.setBackground(new Color(255, 128, 128));
 		btn_delete.setForeground(new Color(255, 255, 255));
-		btn_delete.setBounds(169, 390, 89, 23);
+		btn_delete.setBounds(184, 390, 89, 23);
 		contentPane.add(btn_delete);
 		
 		btn_update = new JButton("Update");
 		btn_update.setBackground(new Color(128, 255, 128));
 		btn_update.setForeground(new Color(255, 255, 255));
-		btn_update.setBounds(278, 390, 89, 23);
+		btn_update.setBounds(302, 390, 89, 23);
 		contentPane.add(btn_update);
-		
-		btn_OK = new JButton("OK");
-		btn_OK.setBackground(new Color(128, 255, 255));
-		btn_OK.setForeground(new Color(255, 255, 255));
-		btn_OK.setBounds(388, 390, 89, 23);
-		contentPane.add(btn_OK);
 		
 		btn_cancel = new JButton("Cancel");
 		btn_cancel.setBackground(new Color(255, 128, 64));
 		btn_cancel.setForeground(new Color(255, 255, 255));
-		btn_cancel.setBounds(501, 390, 89, 23);
+		btn_cancel.setBounds(417, 390, 89, 23);
 		contentPane.add(btn_cancel);
 		
 		textField_find = new JTextField();
