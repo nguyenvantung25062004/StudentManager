@@ -75,12 +75,25 @@ public class ClassBLL {
         return classDAO.delete(classID);
     }
 
-    public ArrayList<ClassDTO> findClassByLecturerName(String lecturerName) {
-        if (!isValidLecturerName(lecturerName)) {
-            return new ArrayList<>();
+    public ArrayList<ClassDTO> searchClasses(String keyword) {
+        if (keyword == null || keyword.trim().isEmpty()) {
+            return getAllClasses();
         }
-
-        return classDAO.findByName(lecturerName);
+        
+        keyword = keyword.toLowerCase().trim();
+        ArrayList<ClassDTO> allClasses = classDAO.getAllClasses();
+        ArrayList<ClassDTO> result = new ArrayList<>();
+        
+        for (ClassDTO classDTO : allClasses) {
+            if (classDTO.getClassID().toLowerCase().startsWith(keyword) ||
+                classDTO.getLecturerName().toLowerCase().startsWith(keyword) ||
+                String.valueOf(classDTO.getStudentCount()).startsWith(keyword) ||
+                classDTO.getFacultyName().toLowerCase().startsWith(keyword)) {
+                result.add(classDTO);
+            }
+        }
+        
+        return result;
     }
 
     public ArrayList<ClassDTO> getAllClasses() {

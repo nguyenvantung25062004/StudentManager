@@ -79,7 +79,6 @@ public class GUI extends JFrame {
 		    label.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
 		    label.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-		    // Hover effect
 		    label.addMouseListener(new MouseAdapter() {
 		        @Override
 		        public void mouseClicked(MouseEvent e) {
@@ -106,7 +105,9 @@ public class GUI extends JFrame {
 		JPanel classManager = new ClassManager().contentPane;
 		contentPanel.add(classManager,"Classes Manager");
 		
-		contentPanel.add(new JLabel("Statistics"),"Statistics");
+		JPanel statistics = new Statistics();
+        contentPanel.add(statistics, "Statistics");
+		
 		
 		contentPane.add(menuPanel, BorderLayout.WEST);
         contentPane.add(contentPanel, BorderLayout.CENTER);

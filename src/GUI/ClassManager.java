@@ -212,8 +212,13 @@ public class ClassManager {
         });
 
         btn_find.addActionListener(e -> {
-            String lecturerName = textField_find.getText().trim();
-            loadClasses(classBLL.findClassByLecturerName(lecturerName));
+        	String keyword = textField_find.getText().trim();
+            ArrayList<ClassDTO> searchResult = classBLL.searchClasses(keyword);
+            loadClasses(searchResult);
+            
+            if (searchResult.isEmpty() && !keyword.isEmpty()) {
+                JOptionPane.showMessageDialog(contentPane, "Không tìm thấy lớp phù hợp!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            }
         });
 
         btn_cancel.addActionListener(e -> {

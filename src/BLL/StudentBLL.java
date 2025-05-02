@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import DAO.StudentDAO;
+import DTO.ProvinceDTO;
 import DTO.StudentDTO;
 
 public class StudentBLL {
@@ -114,12 +115,39 @@ public class StudentBLL {
         return studentDAO.delete(id);
     }
 
-    public ArrayList<StudentDTO> findStudentByName(String name) {
-        if (!isValidName(name)) {
-            return new ArrayList<>();
+    public ArrayList<StudentDTO> searchStudents(String keyword) {
+        if (keyword == null || keyword.trim().isEmpty()) {
+            return getAllStudents();
         }
-
-        return studentDAO.findByName(name);
+        
+        keyword = keyword.toLowerCase().trim();
+        ArrayList<StudentDTO> allStudents = studentDAO.getAllStudents();
+        ArrayList<StudentDTO> result = new ArrayList<>();
+        ArrayList<ProvinceDTO> provinces = ProvinceDTO.getListProvince();
+        
+        for (StudentDTO student : allStudents) {
+            String provinceName = "";
+            for (ProvinceDTO province : provinces) {
+                if (province.getID() == student.getProvince_id()) {
+                    provinceName = province.getName().toLowerCase();
+                    break;
+                }
+            }
+            
+            if (student.getID().toLowerCase().startsWith(keyword) ||
+                student.getName().toLowerCase().startsWith(keyword) ||
+                student.getPhoneNumber().startsWith(keyword) ||
+                student.getCitizenID().startsWith(keyword) ||
+                student.getClassID().toLowerCase().startsWith(keyword) ||
+                String.valueOf(student.getConductScore()).startsWith(keyword) ||
+                String.valueOf(student.getAcademicScore()).startsWith(keyword) ||
+                provinceName.startsWith(keyword) ||
+                (student.isGender() ? "male" : "female").startsWith(keyword)) {
+                result.add(student);
+            }
+        }
+        
+        return result;
     }
 
     public ArrayList<StudentDTO> getAllStudents() {

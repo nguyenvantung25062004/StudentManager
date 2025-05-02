@@ -297,8 +297,12 @@ public class StudentManager{
         });
 
         btn_find.addActionListener(e -> {
-            String name = textField_find.getText().trim();
-            loadStudents(studentBLL.findStudentByName(name));
+        	String keyword = textField_find.getText().trim();
+            ArrayList<StudentDTO> searchResult = studentBLL.searchStudents(keyword);
+            loadStudents(searchResult);
+            if (searchResult.isEmpty() && !keyword.isEmpty()) {
+                JOptionPane.showMessageDialog(contentPane, "No matching student found!", "Error", JOptionPane.INFORMATION_MESSAGE);
+            }
         });
         
         btn_cancel.addActionListener(e->{
