@@ -37,12 +37,9 @@ public class SplashScreen extends JFrame {
                 progressBar.setValue(i);
             }
             dispose();
+            
+            GUI g = new GUI();
+            g.setVisible(true);
         }).start();
-    }
-
-    public static void main(String[] args) {
-        SplashScreen splash = new SplashScreen();
-        splash.setVisible(true);
-        splash.startLoading();
     }
 }
