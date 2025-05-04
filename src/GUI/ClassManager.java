@@ -217,7 +217,7 @@ public class ClassManager {
             loadClasses(searchResult);
             
             if (searchResult.isEmpty() && !keyword.isEmpty()) {
-                JOptionPane.showMessageDialog(contentPane, "Không tìm thấy lớp phù hợp!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(contentPane, "No matching class found!", "Error", JOptionPane.INFORMATION_MESSAGE);
             }
         });
 

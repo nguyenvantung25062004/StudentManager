@@ -61,18 +61,18 @@ public class StudentDAO {
     }
 
     public boolean update(StudentDTO st) {
-        String sql = "UPDATE student SET Conduct_Score = ?, Name = ?, ClassID = ?, Province_id = ?, Date_Of_Birth = ?, Gender = ?, Academic_Score = ?, Citizen_ID = ?, Phone_number = ? WHERE ID = ?";
+        String sql = "UPDATE student SET Name = ?, Phone_number = ?, Citizen_ID = ?, Province_id = ?, Date_Of_Birth = ?, Gender = ?, Academic_Score = ?, Conduct_Score = ?, Class_ID = ? WHERE ID = ?";
         try (Connection conn = getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, st.getConductScore());
-            pstmt.setString(2, st.getName());
-            pstmt.setString(3, st.getClassID());
+        	pstmt.setString(1, st.getName());
+            pstmt.setString(2, st.getPhoneNumber());
+            pstmt.setString(3, st.getCitizenID());
             pstmt.setInt(4, st.getProvince_id());
             pstmt.setDate(5, new java.sql.Date(st.getDateOfBirth().getTime()));
             pstmt.setBoolean(6, st.isGender());
             pstmt.setFloat(7, st.getAcademicScore());
-            pstmt.setString(8, st.getCitizenID());
-            pstmt.setString(9, st.getPhoneNumber());
+            pstmt.setInt(8, st.getConductScore());
+            pstmt.setString(9, st.getClassID());
             pstmt.setString(10, st.getID());
             return pstmt.executeUpdate() > 0;
         } catch (SQLException e) {

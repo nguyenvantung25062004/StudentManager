@@ -93,16 +93,16 @@ public class StudentBLL {
             return false;
         }
 
-        boolean exists = false;
-        for (StudentDTO s : studentDAO.getAllStudents()) {
-            if (s.getID().equals(student.getID())) {
-                exists = true;
-                break;
-            }
-        }
-        if (!exists) {
-            return false;
-        }
+//        boolean exists = false;
+//        for (StudentDTO s : studentDAO.getAllStudents()) {
+//            if (s.getID().equals(student.getID())) {
+//                exists = true;
+//                break;
+//            }
+//        }
+//        if (exists==false) {
+//            return false;
+//        }
 
         return studentDAO.update(student);
     }
